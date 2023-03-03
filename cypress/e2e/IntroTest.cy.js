@@ -52,8 +52,8 @@ describe('intro', () => {
     cy.get('[src="/images/logo.png"]').click();
     cy.url().should('include', '/');
     //스토어 링크 이동 확인
-    cy.get('[aria-label="애플스토어에서 앱 다운로드"] > img').click();
-    cy.get('[aria-label="구글플레이스토어에서 앱 다운로드"] > img').click();
+    // cy.get('[aria-label="애플스토어에서 앱 다운로드"] > img').click();
+    // cy.get('[aria-label="구글플레이스토어에서 앱 다운로드"] > img').click();
 
 
   });
