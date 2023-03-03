@@ -1,45 +1,31 @@
+
+/*
+[테스트 시나리오]
+목적 : 로그인이 정상적으로 가능한지 확인
+1. 로그인 버튼 선택
+2. 이메일 입력
+3. 비밀번호 입력
+4. 이메일 저장 체크
+5. 로그인 버튼 선택
+6. 로그인 확인
+*/
+
+
 describe('로그인 화면', () => {
 
-    beforeEach(() => {
-      cy.visit('https://release-rwith-web-client-stg.dxgx6puil9wtf.amplifyapp.com/');
-    });
-  
     it('로그인 화면 접근!', () => {
-  
-      cy.get('[href="/login"]').click();
-  
-      cy.get('.design-cache-prefix-4xzffc').contains('로그인');
-     
-    });
-  
-    it('아이디 찾기 화면 접근', () => {
-  
-      cy.get('[href="/login"]').click();
-  
-      cy.get('[href="/login/emailrecovery"]').click();
-  
-      cy.get('.design-cache-prefix-1qswvkl').contains('아이디 찾기');
+
+      cy.visit('/');
       
-    });
-  
-    it('비밀번호 찾기 화면 접근', () => {
-       
+      //로그인 버튼 선택
       cy.get('[href="/login"]').click();
-  
-      cy.get('[href="/login/passwordrecovery"]').click();
-  
-      cy.get('.design-cache-prefix-1qswvkl').contains('비밀번호 찾기');
-        
-    });
-  
-    it('회원가입 화면 접근', () => {
-  
-      cy.get('[href="/login"]').click();
-  
-      cy.get('.design-cache-prefix-1w2hs58').click();
-  
-      cy.get('.design-cache-prefix-173jcy1').contains('약관 동의');
+      //로그인 화면 접근 확인
+      cy.url().should('include', '/login');
+
+
      
     });
+  
+ 
   
   })

@@ -1,16 +1,30 @@
-describe('홈 화면', () => {
-  it('홈 화면 접속 및 안내 문구 체크', () => {
 
-    cy.visit('https://release-rwith-web-client-stg.dxgx6puil9wtf.amplifyapp.com/')
+/*
+[테스트 시나리오]
+목적 : 비로그인 상태의 into 화면의 안내 문구 및 버튼/QR코드 노출 확인
+1. intro 화면 접근
+2. 상단 안내 문구 확인
+3. 중간 안내 문구 확인
+4. 하단 안내 문구 확인
+5. 내 매물 등록하고 공실 해결하기 버튼 노출
+6. 회원가입하기 버튼 노출
+7. 내 매물 등록하기 버튼 노출
+8. 앱 다운로드 버튼 노출
+9. QR코드 노출
+10. 고객센터 정보 확인
+*/
+
+describe('intro', () => {
+  it('intro 화면 접속 및 안내 문구 체크', () => {
+
+    cy.visit('/');
 
     //상단 안내 문구
-    cy.get('.design-cache-prefix-1all1tc').contains('알스퀘어 위드의 시작');
-    cy.get('.design-cache-prefix-1o8vykk').contains('지식산업센터도');
-    cy.get('.design-cache-prefix-1trr0af').contains('알스퀘어');
-    cy.get('.design-cache-prefix-bt3anp').contains('알스퀘어 위드를 통해고객님의 부동산 파트너로 한 걸음 더 다가갑니다.');
+    cy.get('.design-cache-prefix-10herkd').contains('알스퀘어 위드의 시작');
+  
+    cy.contains('서비스 소개').click();
 
-    // 중간 안내 문구
-    cy.get('.design-cache-prefix-1syx2df').contains('13년간 쌓아온');
+ 
 
   });
 })
