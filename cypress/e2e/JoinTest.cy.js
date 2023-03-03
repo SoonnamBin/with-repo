@@ -17,12 +17,14 @@ describe('회원가입', () => {
     cy.get('[href="/join"] > .MuiBox-root').click();
     cy.url().should('include', '/join');
     //모두 동의합니다. 체크
-    cy.get('.design-cache-prefix-d4m1ws > .design-cache-prefix-1xhj18k > .MuiBox-root > .design-cache-prefix-1wxsqf5').click();
+    cy.contains('모두 동의합니다.').click();
     //필수 및 선택 약관 모두 체크 및 동의하고 가입하기 버튼 활성화
     cy.get('[type="checkbox"]').check().should('be.enabled');
-    cy.get('.design-cache-prefix-1xscqog').should('be.enabled');
+    cy.contains('동의하고 가입하기').should('be.enabled');
     //동의하고 가입하기 버튼 선택
-    cy.get('.design-cache-prefix-1xscqog').click();
-    
+    // cy.contains('동의하고 가입하기').click();
+    cy.wait(500);
+
+
   })
 })

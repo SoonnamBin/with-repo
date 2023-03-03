@@ -25,11 +25,11 @@ describe('매물등록', () => {
     //매물등록 화면 확인
     cy.url().should('include', '/regist/property');
     //건물 찾기 > 건물명 입력
-    cy.get('.design-cache-prefix-1nvlr0k').type('마리오타워');
+    cy.get('input[placeholder="등록할 건물의 주소, 건물명으로 찾아보세요."]').type('마리오타워');
     //검색된 건물명 선택
-    cy.get('.design-cache-prefix-50l9r1').click();
+    cy.contains('마리오타워').click();
     //선택한 건물과 입력한 건물명 비교
-    cy.get('.design-cache-prefix-1nvlr0k').should('have.value', '마리오타워');
+    cy.get('input[placeholder="등록할 건물의 주소, 건물명으로 찾아보세요."]').should('have.value', '마리오타워');
     //층 선택
     cy.get('button[placeholder="층 선택"]').click();
 
