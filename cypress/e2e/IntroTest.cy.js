@@ -15,16 +15,46 @@
 */
 
 describe('intro', () => {
-  it('intro 화면 접속 및 안내 문구 체크', () => {
+  it('intro', () => {
 
     cy.visit('/');
 
-    //상단 안내 문구
-    cy.get('.design-cache-prefix-10herkd').contains('알스퀘어 위드의 시작');
-  
+    //GNB > 서비스 소개 선택
     cy.contains('서비스 소개').click();
+    //스크롤 위로 가기
+    cy.get('button[aria-label="스크롤 위로 가기"]').click();
+    //GNB > 이용안내 선택
+    cy.contains('이용안내').click();
+    //스크롤 위로 가기
+    cy.get('button[aria-label="스크롤 위로 가기"]').click();
+    //내 매물 등록하고 공실 해결하기 선택
+    cy.get('.design-cache-prefix-d1z2nu').click();
+    cy.url().should('include', '/login');
+    //intro 재접근
+    cy.get('[src="/images/logo.png"]').click();
+    cy.url().should('include', '/');
+    //회원가입하기 버튼 선택
+    cy.get('.design-cache-prefix-16pyde7 > .design-cache-prefix-18jlma7').click();
+    cy.url().should('include', '/join')
+    //intro 재접근
+    cy.get('[src="/images/logo.png"]').click();
+    cy.url().should('include', '/');
+    //내 매물 등록하기 버튼 선택
+    cy.get('.design-cache-prefix-j7qwjs > .design-cache-prefix-18jlma7').click();
+    cy.url().should('include', '/login');
+    //intro 재접근
+    cy.get('[src="/images/logo.png"]').click();
+    cy.url().should('include', '/');
+    //내 매물 등록하기 버튼 선택
+    cy.get('.design-cache-prefix-e0tjrc > .design-cache-prefix-18jlma7').click();
+    cy.url().should('include', '/login');
+    //intro 재접근
+    cy.get('[src="/images/logo.png"]').click();
+    cy.url().should('include', '/');
+    //스토어 링크 이동 확인
+    cy.get('[aria-label="애플스토어에서 앱 다운로드"] > img').click();
+    cy.get('[aria-label="구글플레이스토어에서 앱 다운로드"] > img').click();
 
- 
 
   });
 })
