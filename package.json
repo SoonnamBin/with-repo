@@ -11,7 +11,7 @@
     "cypress": "^12.5.1"
   },
   "scripts": {
-    "start": "IntroTest.cy.js",
+    "start": "C:\Users\zizib\OneDrive\바탕 화면\R.With\IntroTest.cy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
