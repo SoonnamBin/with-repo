@@ -11,7 +11,7 @@
     "cypress": "^12.5.1"
   },
   "scripts": {
-    "start": "",
+    "start": "IntroTest.cy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
