@@ -39,6 +39,7 @@ jobs:
           path: cypress/results/results.html
           
       - name: Cypress Run Summary
+        if: ${{ success() }}
         uses: cypress-io/github-action@v2
         with:
           command: 'cypress-run-summary'
