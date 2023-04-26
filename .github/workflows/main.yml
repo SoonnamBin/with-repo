@@ -14,7 +14,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-          spec: cypress/e2e/IntroTest.cy.js
+          spec: cypress/integration/IntroTest.cy.js
           record: false
           reporter: mochawesome
           reporterOptions: '{"reportDir":"cypress/results","overwrite":false,"html":true,"json":true,"timestamp":"mmddyyyy-HHMMss","reportFilename":"report","quiet":true}'
