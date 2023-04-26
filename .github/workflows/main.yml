@@ -1,12 +1,7 @@
 name: Cypress Tests
 
 on:
-  push:
-    branches:
-      - master # 테스트 실행 대상 브랜치
-  pull_request:
-    branches:
-      - master # 테스트 실행 대상 브랜치 
+  workflow_dispatch:
 
 jobs:
   cypress-run:
