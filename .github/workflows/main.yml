@@ -40,7 +40,7 @@ jobs:
           
       - name: Cypress Run Summary
         if: ${{ success() }}
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v1
         with:
           command: 'cypress-run-summary'
           autostart: true
