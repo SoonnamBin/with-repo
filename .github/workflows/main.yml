@@ -1,16 +1,11 @@
-name: Cypress Tests
-
-on:
-  push:
-    branches:
-      - main
-
 jobs:
-  cypress-run:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install dependencies
-        run: npm ci
-      - name: Run Cypress tests
-        run: npm run cypress:run
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - run: npm ci
+      - run: npm run cypress:run
