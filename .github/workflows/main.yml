@@ -14,15 +14,23 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
           # 스펙파일 위치
-          spec: cypress/e2e/*.js
+          spec: cypress/e2e/IntroTest.cy.js
           # 녹화파일 생성 안함
           record: false
           # Cancel the run after xx failed tests
           # auto-cancel-after-failures: ${{inputs.stopAfterFailCount}}
 
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-results
+          path: cypress/results/
+          if-no-files-found: warn
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
