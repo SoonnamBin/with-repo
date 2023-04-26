@@ -1,6 +1,8 @@
 const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
+  // specPattern 수정
+  specPattern: 'cypress/integration/**/*.spec.js',
   projectId: "fa3noq",
   "reporter": "mochawesome",
   "reporterOptions": {
@@ -16,7 +18,6 @@ module.exports = defineConfig({
     "timestampFormat": "{{DATE}} {{TIME}}"
   },
   e2e: {
-    specPattern: 'cypress/e2e/**/*',
     baseUrl: "https://release-rwith-web-client-stg.dxgx6puil9wtf.amplifyapp.com/",
     setupNodeEvents(on, config) {
       // implement node event listeners here
