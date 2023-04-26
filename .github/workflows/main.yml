@@ -42,17 +42,8 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           command: 'cypress-run-summary'
-          autostart: true
           outputDir: 'cypress/results'
           outputFormat: 'html'
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          
-      - name: Show Cypress Results
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: cypress-results
-          path: cypress/results/
-        env:
-          ARTIFACTS_URL: ${{ steps.upload.outputs.artifacts_url }}
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
