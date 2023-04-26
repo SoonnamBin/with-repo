@@ -1,0 +1,111 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-04-26T05:56:21.940Z",
+    "end": "2023-04-26T05:56:28.883Z",
+    "duration": 6943,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "cfc3827f-6018-4a5c-bdf7-ad30dab5f96d",
+      "title": "",
+      "fullFile": "cypress\\e2e\\RegistTest.cy.js",
+      "file": "cypress\\e2e\\RegistTest.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9a68a864-f22b-4170-972f-53c5b8e78f28",
+          "title": "매물등록",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "임대 매물 등록하기",
+              "fullTitle": "매물등록 임대 매물 등록하기",
+              "timedOut": null,
+              "duration": 6874,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/');\n//로그인 버튼 선택\ncy.get('[href=\"/login\"]').click();\n//로그인 화면 확인\ncy.url().should('include', '/login');\n//이메일 입력\ncy.get('input[name=\"email\"]').type('zizibebe10@naver.com');\n//비밀번호 입력\ncy.get('input[name=\"password\"]').type('sa03103166');\n//로그인 버튼 선택\ncy.get('button[type=submit]').click();\n//로그인 확인\ncy.url().should('include', '/manage');\n//매물등록 선택\ncy.get('[href=\"/regist\"]').click();\n//매물등록 화면 확인\ncy.url().should('include', '/regist/property');\n//건물 찾기 > 건물명 입력\ncy.get('input[placeholder=\"등록할 건물의 주소, 건물명으로 찾아보세요.\"]').type('마리오타워');\n//검색된 건물명 선택\ncy.contains('마리오타워').click();\n//선택한 건물과 입력한 건물명 비교\ncy.get('input[placeholder=\"등록할 건물의 주소, 건물명으로 찾아보세요.\"]').should('have.value', '마리오타워');\n//층 선택\ncy.get('button[placeholder=\"층 선택\"]').click();\ncy.get('div').contains('2층').click();\n//호수 선택\ncy.get('button[placeholder=\"호수 선택\"]').click();\ncy.get('div').contains('211호').click();\n//매물 유형 > 임대 확인\ncy.get('input[name=\"productType\"]').should('have.value', 'RENT');\n//분할 여부 > 분할매물이 아닙니다 확인\ncy.get('input[name=\"canPartitioning\"]').should('have.value', 'false');\n//다음 버튼 활성화 확인\ncy.get('[type=\"submit\"]').should('be.enabled');\n//다음 버튼 선택 > 매물 정보 등록 화면 노출 확인\ncy.get('[type=\"submit\"]').click();\ncy.url().should('include', '/regist/rent');\ncy.contains('제출하기').should('be.disabled');\n//임대료 입력\ncy.get('input[name=\"expenseInformation.rent\"]').type('1500000');\n//보증금 입력\ncy.get('input[name=\"expenseInformation.securityDeposit\"]').type('1500000');\n//공실 여부 > 공실입니다 확인\ncy.get('input[name=\"vacancy\"]').should('have.value', 'true');\n//정보 제공 활용 동의 체크\ncy.get('input[name=\"agreement\"]').click();\n//필수 입력 항목 모두 입력 시 제출하기 버튼 활성화 확인\ncy.contains('제출하기').should('be.enabled');\ncy.contains('제출하기').click();\n//등록정보 확인 > 등록 완료하기 선택\ncy.contains('등록 완료하기').click();\n//임대 매물 등록 완료 확인\ncy.url().should('include', '/regist/confirm');",
+              "err": {},
+              "uuid": "31db8b73-44b4-4f99-a0aa-976cdfdc436b",
+              "parentUUID": "9a68a864-f22b-4170-972f-53c5b8e78f28",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "31db8b73-44b4-4f99-a0aa-976cdfdc436b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6874,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "index",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "timestamp": "yyyy-mm-dd HH:MM:ss",
+        "reportFilename": "index",
+        "charts": true,
+        "code": true,
+        "autoOpen": false,
+        "timestampFormat": "{{DATE}} {{TIME}}"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
