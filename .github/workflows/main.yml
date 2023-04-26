@@ -11,16 +11,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
+      - name: Install Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14'
 
-      - name: Install Dependencies
-        run: |
-          cd ./cypress
-          npm ci
-        working-directory: ./
+      - name: Install dependencies
+        run: npm install
+
+      - name: Change working directory to Cypress
+        run: cd ./cypress
+
+      - name: Install Cypress
+        uses: cypress-io/github-action@v5
+        with:
+          install: true
 
       - name: Cypress run
         uses: cypress-io/github-action@v5
@@ -28,7 +33,7 @@ jobs:
           spec: cypress/e2e/IntroTest.cy.js
           record: false
           reporter: mochawesome
-          reporterOptions: "{\"reportDir\":\"cypress/results\",\"overwrite\":false,\"html\":true,\"json\":true,\"timestamp\":\"mmddyyyy-HHMMss\",\"reportFilename\":\"report\",\"quiet\":true}"
+          reporterOptions: '{"reportDir":"cypress/results","overwrite":false,"html":true,"json":true,"timestamp":"mmddyyyy-HHMMss","reportFilename":"report","quiet":true}'
           working-directory: ./cypress
 
       - name: Upload Test Results
