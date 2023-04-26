@@ -26,11 +26,11 @@ jobs:
       - name: Run Cypress tests
         run: npm run cypress:run
         
-#       - name: Generate Cypress results
-#         uses: cypress-io/github-action@v2
-#         with:
-#           command: 'cypress-parallel/json-report'
-#           outputDir: 'cypress/results'
+      - name: Generate Cypress results
+        uses: cypress-io/github-action@v2
+        with:
+          command: 'cypress-parallel/json-report'
+          outputDir: 'cypress/results'
           
       - name: Upload Cypress Results
         uses: actions/upload-artifact@v2
