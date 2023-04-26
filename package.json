@@ -1,7 +1,6 @@
 {
   "name": "r.with",
   "version": "1.0.0",
-  "description": "",
   "main": "cypress.config.js",
   "dependencies": {
     "package-lock.json": "^1.0.0"
@@ -17,5 +16,6 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": ""
 }
