@@ -11,7 +11,7 @@
     "cypress": "^12.5.1"
   },
   "scripts": {
-    "start": "npx cypress run *.js",
+    "start": "npx cypress run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
