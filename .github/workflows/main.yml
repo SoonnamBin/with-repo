@@ -1,11 +1,24 @@
+name: Cypress Tests
+
+on:
+  push:
+    branches:
+      - main # 테스트 실행 대상 브랜치
+  pull_request:
+    branches:
+      - main # 테스트 실행 대상 브랜치
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 16.x
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v2
         with:
-          node-version: '16.x'
-      - run: npm ci
-      - run: npm run cypress:run
+          node-version: '14.x'
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Cypress tests
+        run: npm run cypress:run
