@@ -39,11 +39,11 @@ jobs:
           path: cypress/results/results.html
           
       - name: Cypress Run Summary
-        if: ${{ success() }}
-        uses: cypress-io/github-action@v1
+        uses: cypress-io/github-action@v2
         with:
           command: 'cypress-run-summary'
           autostart: true
           outputDir: 'cypress/results'
+          outputFormat: 'html'
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
