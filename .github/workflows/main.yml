@@ -18,14 +18,9 @@ jobs:
           spec: cypress/e2e/IntroTest.cy.js
           # 녹화파일 생성 안함
           record: false
-          # Cancel the run after xx failed tests
-          # auto-cancel-after-failures: ${{inputs.stopAfterFailCount}}
+          # HTML 리포트 생성
+          reporter: mochawesome
+          reporterOptions: "{\"reportDir\":\"cypress/results\",\"overwrite\":false,\"html\":false,\"json\":true,\"timestamp\":\"mmddyyyy-HHMMss\",\"reportFilename\":\"report\",\"quiet\":true}"
 
-      - name: Upload Test Results
-        uses: actions/upload-artifact@v2
-        with:
-          name: cypress-results
-          path: cypress/results/
-          if-no-files-found: warn
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Move report file to cypress/results
+        run: mv cypress/mochawesome-report/mochawesome*.json cypress/results/report.json && npx marge cypress/results/report.json -o cypress/results
