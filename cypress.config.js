@@ -1,6 +1,7 @@
 const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
+  integrationFolder: 'cypress/e2e',
   projectId: "fa3noq",
   "reporter": "mochawesome",
   "reporterOptions": {
