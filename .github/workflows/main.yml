@@ -26,17 +26,17 @@ jobs:
       - name: Run Cypress tests
         run: npm run cypress:run
         
-      - name: Generate Cypress results
-        uses: cypress-io/github-action@v2
-        with:
-          command: 'cypress-parallel/json-report'
-          outputDir: 'cypress/results'
+#       - name: Generate Cypress results
+#         uses: cypress-io/github-action@v2
+#         with:
+#           command: 'cypress-parallel/json-report'
+#           outputDir: 'cypress/results'
           
-      - name: Display Cypress results in Summary
+      - name: Upload Cypress Results
         uses: actions/upload-artifact@v2
         with:
           name: cypress-results
-          path: cypress/results
+          path: cypress/results/results.html
           
       - name: Cypress Run Summary
         uses: cypress-io/github-action@v2
@@ -44,5 +44,5 @@ jobs:
           command: 'cypress-run-summary'
           autostart: true
           outputDir: 'cypress/results'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
