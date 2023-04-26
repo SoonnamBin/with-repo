@@ -9,41 +9,20 @@ on:
       - master # 테스트 실행 대상 브랜치 
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  cypress-run:
+    name: Cypress run
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
-      
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
         with:
-          node-version: '16.x'
-          
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: Run Cypress tests
-        run: npm run cypress:run
-        
-      - name: Generate Cypress results
-        uses: cypress-io/github-action@v2
-        with:
-          command: 'cypress-parallel/json-report'
-          outputDir: 'cypress/results'
-          
-      - name: Upload Cypress Results
-        uses: actions/upload-artifact@v2
-        with:
-          name: cypress-results
-          path: cypress/results/results.html
-          
-      - name: Cypress Run Summary
-        uses: cypress-io/github-action@v2
-        with:
-          command: 'cypress-run-summary'
-          outputDir: 'cypress/results'
-          outputFormat: 'html'
-        env: 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # 스펙파일 위치
+          spec: cypress/e2e/*.js
+          # 녹화파일 생성 안함
+          record: false
+          # Cancel the run after xx failed tests
+          # auto-cancel-after-failures: ${{inputs.stopAfterFailCount}}
 
