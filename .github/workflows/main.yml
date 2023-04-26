@@ -1,5 +1,12 @@
+name: Cypress Tests
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  test:
+  cypress-run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
