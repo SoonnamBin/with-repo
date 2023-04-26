@@ -14,16 +14,35 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
       - name: Use Node.js 16.x
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
+          
       - name: Install dependencies
         run: npm ci
+        
       - name: Run Cypress tests
         run: npm run cypress:run
+        
       - name: Generate Cypress results
         uses: cypress-io/github-action@v2
         with:
           command: 'cypress-parallel/json-report'
           outputDir: 'cypress/results'
+          
+      - name: Display Cypress results in Summary
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-results
+          path: cypress/results
+          
+      - name: Cypress Run Summary
+        uses: cypress-io/github-action@v2
+        with:
+          command: 'cypress-run-summary'
+          autostart: true
+          outputDir: 'cypress/results'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
