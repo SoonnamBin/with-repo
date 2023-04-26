@@ -18,7 +18,6 @@ jobs:
           record: false
           reporter: mochawesome
           reporterOptions: '{"reportDir":"cypress/results","overwrite":false,"html":true,"json":true,"timestamp":"mmddyyyy-HHMMss","reportFilename":"report","quiet":true}'
-          working-directory: ./cypress
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v2
