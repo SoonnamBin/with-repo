@@ -20,16 +20,7 @@ jobs:
           record: false
           # HTML 리포트 생성
           reporter: mochawesome
-          reporterOptions: >
-            {
-              "reportDir":"cypress/results",
-              "overwrite":false,
-              "html":true,
-              "json":false,
-              "timestamp":"mmddyyyy-HHMMss",
-              "reportFilename":"report",
-              "quiet":true
-            }
+          reporterOptions: "{\"reportDir\":\"cypress/results\",\"overwrite\":false,\"html\":true,\"json\":false,\"timestamp\":\"mmddyyyy-HHMMss\",\"reportFilename\":\"report\",\"quiet\":true}"
 
       - name: Move report file to cypress/results
-        run: mv cypress/results/mochawesome-report/mochawesome.html cypress/results/report.html
+        run: mv cypress/mochawesome-report/mochawesome*.html cypress/results/report.html && npx marge cypress/results/report.json -o cypress/results
